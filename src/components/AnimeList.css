@@ -1,0 +1,31 @@
+.anime-list {
+    padding: 20px;
+  }
+  
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .anime-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .anime-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .anime-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .anime-card p {
+    margin: 0 0 10px;
+  }
