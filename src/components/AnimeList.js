@@ -6,28 +6,21 @@ const AnimeList = () => {
   const [animes, setAnimes] = useState([]);
 
   useEffect(() => {
-    const fetchAnimes = async () => {
-      try {
-        const response = await axios.get('/api/anime');
-
-        setAnimes(response.data.data); // Предполагая, что ответ содержит массив в поле data
-      } catch (error) {
-        console.error("Error fetching animes:", error);
-      }
-    };
-
-    fetchAnimes();
+    fetch('https://api.anilibria.tv/v3/title/updates?limit=10')
+      .then(response => response.json())
+      .then(data => {
+        Set.AnimeList(data.list); // допустим, у тебя есть setAnimeList для установки состояния
+      })
+      .catch(error => console.error('Ошибка:', error));
   }, []);
-
   return (
     <div className="anime-list">
       <h1>Anime List</h1>
       <div className="anime-grid">
-        {animes.map((anime) => (
-          <div className="anime-card" key={anime.id}>
-            <img src={anime.image} alt={anime.title} />
-            <h3>{anime.title}</h3>
-            <p>Rating: {anime.rating}</p>
+      {AnimeList.map(anime => (
+  <div key={anime.id}>
+    <h2>{anime.names.ru}</h2>
+    <img src={`https://api.anilibria.tv${anime.posters.medium.url}`} alt={anime.names.ru} />
           </div>
         ))}
       </div>
